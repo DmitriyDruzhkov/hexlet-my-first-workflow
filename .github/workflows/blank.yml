@@ -12,6 +12,15 @@ jobs:
       # экшен — выполняет какую-то задачу
       # checkout — клонирует репозиторий
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       # run – произвольная bash-команда
       # ls -la выведет содержимое текущего репозитория
       - run: make say-hello
+      # Ставим зависимости
+      - run: npm install
+      # Запускаем линтер
+      - run: npm run lint
+      # Запускаем тесты
+      # у шагов может быть имя, иногда это помогает отладке
+      # имя выводится на Github при просмотре сборки
+      - name: run tests
